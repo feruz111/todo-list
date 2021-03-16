@@ -48,7 +48,7 @@ export function Todolist(props: PropsType) {
 
 
     return <div>
-        <h3>{props.title}+++</h3>
+        <h3>{props.title}</h3>
         <div>
             <input value={title}
                    onChange={onChangeHandler}
