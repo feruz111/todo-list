@@ -20,7 +20,7 @@ export type TodolistType = {
   filter: FilterValuesType;
 };
 
-type TasksStateType = {
+export type TasksStateType = {
   [key: string]: Array<TaskType>;
 };
 
@@ -123,7 +123,7 @@ function App() {
         </Toolbar>
       </AppBar>
       <Container fixed>
-        <Grid container style={{padding: "20px"}}>
+        <Grid container style={{ padding: "20px" }}>
           <AddItemForm addItem={addTodolist} />
         </Grid>
         <Grid container spacing={3}>
@@ -144,7 +144,7 @@ function App() {
 
             return (
               <Grid item>
-                <Paper style={{padding: "10px"}}>
+                <Paper style={{ padding: "10px" }}>
                   <Todolist
                     key={tl.id}
                     id={tl.id}
