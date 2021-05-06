@@ -21,18 +21,22 @@ type ChangeTodolistTitleActionType = {
 // export type ChangeTodolistFilterActionType = {
 //   type: "CHANGE-TODOLIST-FILTER";
 //   id: string;
-//   filterValue: any;
+//   filter: FilterValuesType;
 // };
+
 export type ChangeTodolistFilterActionType = any;
+
 
 type ActionType =
   | RemoveTodolistActionType
   | AddTodoListActionType
-  | ChangeTodolistFilterActionType
-  | ChangeTodolistTitleActionType;
+  | ChangeTodolistTitleActionType
+  | ChangeTodolistFilterActionType;
+
+const initState: Array<TodolistType> = [];
 
 export const todolistsReducer = (
-  state: Array<TodolistType>,
+  state: Array<TodolistType> = initState,
   action: ActionType
 ) => {
   switch (action.type) {
@@ -40,7 +44,7 @@ export const todolistsReducer = (
       return state.filter((tl) => tl.id !== action.id);
     }
     case "ADD-TODOLIST": {
-      let task = { id: v1(), title: action.title, isDone: false };
+      let task = { id: action.todolistId, title: action.title, isDone: false };
       return [...state, task];
     }
     case "CHANGE-TODOLIST-TITLE": {
@@ -51,14 +55,16 @@ export const todolistsReducer = (
       }
     }
     case "CHANGE-TODOLIST-FILTER": {
+
       const todolist = state.find((tl) => tl.id === action.id);
       if (todolist) {
-        todolist.filter = action.filterValue;
+        todolist.filter = action.filter;
       }
+      debugger
       return [...state];
     }
     default: {
-      throw new Error("I don't understand this type");
+      return state;
     }
   }
 };
@@ -68,10 +74,7 @@ export const RemoveTodolistAC = (
 ): RemoveTodolistActionType => {
   return { type: "REMOVE-TODOLIST", id: todolistId };
 };
-export const AddTodolistAC = (
-  todolistId: string,
-  title: string
-): AddTodoListActionType => {
+export const AddTodolistAC = (title: string): AddTodoListActionType => {
   return { type: "ADD-TODOLIST", title, todolistId: v1() };
 };
 export const ChangeTodolistTitleAC = (
@@ -82,7 +85,7 @@ export const ChangeTodolistTitleAC = (
 };
 export const ChangeTodolistFilterAC = (
   todolistId: string,
-  filterValue: any
+  filter: FilterValuesType
 ): ChangeTodolistFilterActionType => {
-  return { type: "CHANGE-TODOLIST-FILTER", id: todolistId, filterValue };
+  return { type: "CHANGE-TODOLIST-FILTER", id: todolistId, filter };
 };
