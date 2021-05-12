@@ -14,20 +14,25 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.16",
     "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
     "@types/uuid": "^7.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.4",
     "react-scripts": "3.4.1",
     "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
     "typescript": "~3.7.2",
     "uuid": "^8.0.0"
   },
+  "homepage": "https://feruz111.github.io/todo-list",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

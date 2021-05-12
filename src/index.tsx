@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import AppwithRedux from "./AppWithRedux";
+import App from "./App";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import { store } from "./state/store";
 
 ReactDOM.render(
   <Provider store={store}>
-    <AppwithRedux />
+    <App />
   </Provider>,
   document.getElementById("root")
 );
